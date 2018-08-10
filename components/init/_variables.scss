@@ -1,0 +1,73 @@
+$base-font-size: 16px;
+$base-line-height: 20px;
+$base-unit: 'rem';
+
+// The font sizes in our type hierarchy as tee shirt sizes.
+$font-size: (
+  s140: 140px,
+  xxxxxxxl: 107px,
+  xxxxxxl: 82px,
+  xxxxxl: 65px,
+  xxxxl_01: 60px,
+  xxxxl_001: 57px,
+  xxxxl: 53px,
+  s52: 52px,
+  xxxl: 50px,
+  xxl_1: 40px,
+  xxl: 32px,
+  xl_02: 30px,
+  xl_01: 29px,
+  xl_001: 28px,
+  xl_00: 25px,
+  xl: 24px,
+  l_1: 23px,
+  l_01: 22px,
+  l: 20px,
+  m2: 19px,
+  m1: 18px,
+  m0: 17px,
+  m: $base-font-size,
+  s: 15px,
+  ss: 14px,
+  xs: 13px,
+  xxs: 12px,
+  xxxs: 11px,
+  xxxxs: 7px
+);
+
+// Typey allows you to alter font weights site-wide with this map.
+$font-weight: (
+  'black': 900,
+  'bold': 700,
+  'semibold': 600,
+  'medium': 500,
+  'normal': 400,
+  'light': 300,
+);
+
+$typefaces: (
+  freight: (
+    font-family: 'Arial, sans-serif',
+  )
+);
+
+// Set proper path for common fonts.
+$font-path: '../../../../fonts';
+
+$glyphicon-chevron-up: "\e113";
+$glyphicon-envelope: "\2709";
+
+$screen-lg-min-custom: 1200px;
+$screen-md-max-custom: $screen-lg-min-custom - 1;
+
+$screen-lg2:                1320px;
+$screen-lg2-min:            $screen-lg2 !default;
+$screen-lg2-max:            ($screen-lg2-min - 1) !default;
+
+$screen-hdplus:             1600px;
+$screen-hdplus-min:         $screen-hdplus !default;
+$screen-hdplus-max:         ($screen-hdplus-min - 1) !default;
+
+$screen-hdplus2:             1720px;
+$screen-hdplus2-min:         $screen-hdplus2 !default;
+$screen-hdplus2-max:         ($screen-hdplus2-min - 1) !default;

@@ -1,0 +1,32 @@
+/**
+ * Freight Sans
+ */
+@import url(//use.typekit.net/iuc1pzo.css);
+/* line 20, /var/www/vodafonefantasticfridays/src/theme/components/base/root/_root.scss */
+html {
+  font-size: 16px; }
+
+/* line 24, /var/www/vodafonefantasticfridays/src/theme/components/base/root/_root.scss */
+body {
+  font-feature-settings: 'lnum' 1; }
+
+/* line 28, /var/www/vodafonefantasticfridays/src/theme/components/base/root/_root.scss */
+body.no-overflow {
+  position: fixed;
+  left: 0;
+  height: auto;
+  overflow: hidden; }
+
+/* line 20, /var/www/vodafonefantasticfridays/src/theme/components/base/_normalize.scss */
+.field--type-text-with-summary a,
+.field--type-text-long a {
+  color: #dd0031; }
+
+/* line 23, /var/www/vodafonefantasticfridays/src/theme/components/base/_normalize.scss */
+.field--type-text-with-summary a:hover,
+.field--type-text-long a:hover {
+  font-weight: 700; }
+
+/* line 1, /var/www/vodafonefantasticfridays/src/theme/components/components/header/_header.scss */
+body {
+  background: green; }

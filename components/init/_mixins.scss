@@ -1,0 +1,482 @@
+// clearfix()
+//
+// Allows the bottom of an element to extend to the bottom of all floated
+// children elements. @see http://nicolasgallagher.com/micro-clearfix-hack/
+//
+// We use the micro-clearfix, optimized for use in `@extend` where fewer `&` is
+// better.
+@mixin clearfix() {
+  &::before {
+    content: '';
+    display: table;
+  }
+
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin transparent-button {
+  @include button-variant(color(white), transparent, color(white));
+  @include button-size(12px, 10px, 16px, 16px, 0);
+  @include padding(10px 12px);
+  @include spacing(border-width, 2px);
+  border-style: solid;
+  display: inline-block;
+
+  &:hover {
+    text-decoration: none;
+    border-color: color(white);
+  }
+}
+
+@mixin white-button {
+  font-weight: weight('bold');
+  border-radius: 0;
+  background-color: transparent;
+  border: 2px solid color(white);
+  margin: 0;
+  text-transform: uppercase;
+  box-shadow: 0 0 2px #fff;
+  color: color(white);
+}
+
+@mixin squire-corner-inner($position: relative, $color: color(red), $width: 14px, $height: 14px) {
+  @include spacing(width, $width);
+  @include spacing(height, $height);
+  @include spacing(border, 0);
+  @include spacing(border-top-width, 1px);
+  border-style: solid;
+  border-color: rgba($color, 0.3);
+  background-color: $color;
+  display: block;
+  position: relative;
+  content: '';
+  @if $position == static {
+    position: $position;
+  }
+  @if $position == absolute {
+    position: $position;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@mixin squire-corner($pseudoselecor: before, $position: relative, $color: color(red), $width: 14px, $height: 14px) {
+  @if $position == absolute {
+    @include padding-left(18px);
+    @include margin-left(-18px);
+    position: relative;
+    @media (min-width: $screen-sm-min) {
+      @include padding-left(23px);
+      margin-left: 0;
+    }
+  }
+  @if $pseudoselecor == before {
+    &::before {
+      @include squire-corner-inner($position, $color, $width, $height);
+    }
+  }
+  @else {
+    &::after {
+      @include squire-corner-inner($position, $color, $width, $height);
+    }
+  }
+}
+
+@mixin red-menu-region {
+  @include font-size(s);
+  @include padding(20px 20px 0);
+  font-weight: weight('semibold');
+  color: color(white);
+  background-color: color(crimson);
+  position: relative;
+  z-index: 1;
+
+  @media screen and (max-width: $screen-xs-max) {
+    @include padding(0 27px);
+  }
+}
+
+@mixin pink-input {
+  @include font-size(22px);
+  background: transparent;
+  border-color: color('sweet-pink');
+  border-radius: 0;
+  border-style: solid;
+  border-width: 0 0 1px;
+  box-shadow: none;
+  color: color(sweet-pink);
+  font-weight: weight('semibold');
+  max-width: 100%;
+  outline: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+
+  @media screen and (min-width: $screen-xxl-min) {
+    @include font-size(29px);
+  }
+
+  @media screen and (max-width: $screen-xs-max) {
+    @include font-size(20px);
+    @include spacing(border-width, 0 0 2px);
+    border-color: color('white');
+    color: color('white');
+  }
+
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    color: color(sweet-pink);
+
+    @media screen and (max-width: $screen-xs-max) {
+      color: color('white');
+    }
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: color(sweet-pink);
+
+    @media screen and (max-width: $screen-xs-max) {
+      color: color('white');
+    }
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: color(sweet-pink);
+
+    @media screen and (max-width: $screen-xs-max) {
+      color: color('white');
+    }
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: color(sweet-pink);
+
+    @media screen and (max-width: $screen-xs-max) {
+      color: color('white');
+    }
+  }
+
+  &:focus {
+    &::-webkit-input-placeholder {
+      color: color('transparent');
+    }
+
+    &:-moz-placeholder {
+      color: color('transparent');
+    }
+
+    &::-moz-placeholder {
+      color: color('transparent');
+    }
+
+    &:-ms-input-placeholder {
+      color: color('transparent');
+    }
+  }
+}
+
+@mixin glyphicon() {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Mixins for icons.
+
+$font-fidal-icons: 'fidal-icons';
+
+// Icon variables.
+$icon-mob-moins-petit: '\e900';
+$icon-mob-esperluette-pixels: '\e901';
+$icon-mob-plus-pixels: '\e902';
+$icon-mob-fleche-pixels-home: '\e903';
+$icon-mob-fleche-pixels: '\e904';
+$icon-mob-on-pixels: '\e905';
+$icon-desktop-consulter: '\e906';
+$icon-desktop-loupe: '\e907';
+$icon-desktop-esperluette-pixels: '\e908';
+$icon-desktop-fleche-pixels: '\e909';
+$icon-desktop-on-pixels: '\e90a';
+$icon-desktop-plus-pixels: '\e90b';
+$icon-desktop-chevron-home: '\e90c';
+$icon-desktop-fleche-pixels-home: '\e90d';
+$icon-mob-loupe-hamburger: '\e90e';
+$icon-mob-loupe: '\e90f';
+$icon-mob-facebook: '\e910';
+$icon-mob-twitter: '\e911';
+$icon-mob-linkedin: '\e912';
+$icon-mob-share: '\e913';
+$icon-mob-consulter: '\e914';
+$icon-mob-puce-carre: '\e915';
+$icon-mob-plus-petit: '\e916';
+$icon-mob-plus-grand: '\e917';
+$icon-mob-moins-grand: '\e918';
+$icon-mob-enveloppe-abonnement: '\e920';
+$icon-mob-croix: '\e921';
+$icon-mob-chevron-petit: '\e922';
+$icon-mob-chevron-grand: '\e923';
+$icon-desktop-verrou: '\e924';
+$icon-desktop-croix-popup: '\e92d';
+$icon-desktop-pdf-dossier: '\e92e';
+$icon-desktop-pdf-telechargement: '\e92f';
+$icon-desktop-carre-rouge: '\e930';
+$icon-desktop-share: '\e931';
+$icon-desktop-plus-ancre: '\e939';
+$icon-desktop-moins-ancre: '\e93a';
+$icon-desktop-enveloppe: '\e93b';
+$icon-desktop-chevron-petit: '\e93c';
+$icon-mob-verrou: '\e93d';
+
+@mixin icon-base() {
+  font-family: $font-fidal-icons;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1;
+  text-rendering: auto;
+  text-transform: none;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin up-icon($icon, $font-size: inherit) {
+  &::before {
+    content: $icon;
+    font-family: $font-fidal-icons;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-rendering: auto;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @if $font-size != none {
+      @if $font-size != inherit {
+        @include font-size($font-size);
+      }
+      @else {
+        font-size: $font-size;
+      }
+    }
+  }
+}
+
+@mixin icon-here($icon, $font-size: inherit) {
+  content: $icon;
+  font-family: $font-fidal-icons;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-rendering: auto;
+  text-transform: none;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @if $font-size != inherit {
+    @include font-size($font-size);
+  }
+  @else {
+    font-size: $font-size;
+  }
+}
+
+@mixin button-single($border-color: crimson, $color: crimson, $background-color: transparent, $border-hover-color: crimson, $color-hover: white, $background-color-hover: crimson, $icon-name: false, $icon-position-right: false,  $display: flex) {
+  @include padding(9px 11px);
+  @include font-size(14px);
+  @include spacing(border-width, 2px);
+  align-items: center;
+  background-color: color($background-color);
+  border-color: color($border-color);
+  border-radius: 0;
+  border-style: solid;
+  color: color($color);
+  cursor: pointer;
+  font-weight: weight('semibold');
+  line-height: 1.2;
+  margin-right: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .2s ease;
+  @if $display == flex {
+    display: flex;
+  }
+  @else {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  &:hover {
+    border-color: color($border-hover-color);
+    color: color($color-hover);
+    background-color: color($background-color-hover);
+  }
+
+  @media (min-width: $screen-sm-min) {
+    @include padding(7px 11px);
+    @include font-size(16px);
+  }
+
+  @media (min-width: $screen-xxl-min) {
+    @include font-size(22px);
+  }
+
+  @if $icon-name {
+    @if $icon-position-right == false {
+      &::before {
+        @include icon-here($icon-name);
+        @include font-size(13px);
+        @include padding-right(7px);
+        vertical-align: middle;
+
+        @media (min-width: $screen-sm-min) {
+          @include font-size(16px);
+          @include padding-right(8px);
+        }
+
+        @media (min-width: $screen-xxl-min) {
+          @include font-size(19px);
+          @include padding-right(9px);
+        }
+      }
+    } @else {
+      &::after {
+        @include icon-here($icon-name);
+        @include font-size(13px);
+        @include padding-left(7px);
+        vertical-align: middle;
+
+        @media (min-width: $screen-sm-min) {
+          @include font-size(16px);
+          @include padding-left(8px);
+        }
+
+        @media (min-width: $screen-xxl-min) {
+          @include font-size(19px);
+          @include padding-left(9px);
+        }
+      }
+
+      &::before {
+        content: '';
+      }
+    }
+  }
+}
+
+@mixin gray-title {
+  @include font-size(m);
+  color: color(gray-01);
+  font-weight: weight('bold');
+  line-height: 1.25;
+  text-transform: uppercase;
+
+  @media (min-width: $screen-sm-min) {
+    @include font-size(xl_01);
+  }
+
+  @media (min-width: $screen-xxl-min) {
+    @include font-size(38px);
+  }
+}
+
+@mixin gray-input {
+  @include font-size(m);
+  @include padding(16px 30px 16px 18px);
+  @include spacing(letter-spacing, .4px);
+  border-radius: 0;
+  border: 2px solid color(gray-01);
+  color: color('gray');
+  height: auto;
+  line-height: 1.2;
+
+
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    color: color(gray-01);
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: color(gray-01);
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: color(gray-01);
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: color(gray-01);
+  }
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+
+  &.error {
+    background-image: image-url('error.png');
+    background-position: right 16px center;
+    background-repeat: no-repeat;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    @include font-size(l);
+
+    &::-webkit-input-placeholder { /* WebKit browsers */
+      font-weight: weight('semibold');
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      font-weight: weight('semibold');
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+      font-weight: weight('semibold');
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10+ */
+      font-weight: weight('semibold');
+    }
+  }
+}
+
+@mixin read-more-button {
+  @include margin(-11px 0px 22px);
+  @include padding-top(5px);
+  @include font-size(ss);
+  background-color: color('white');
+  display: none;
+  font-weight: weight('medium');
+  line-height: 1;
+  position: relative;
+  text-align: right;
+
+  &::before {
+    background: linear-gradient(to top, color(white), rgba(255, 255, 255, 0));
+    bottom: 100%;
+    content: '';
+    height: 50px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+
+    @media (min-width: $screen-sm-min) {
+      @include spacing(height, 50px);
+    }
+  }
+
+  &,
+  a {
+    color: color(crimson);
+    cursor: pointer;
+  }
+}

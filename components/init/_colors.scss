@@ -1,0 +1,68 @@
+// sass-lint:disable indentation, no-color-keywords
+
+// Colors
+//
+// Use the `color()` function to add colors to CSS properties. To learn more,
+// [read the Chroma documentation](http://johnalbin.github.io/chroma/).
+//
+// Markup: chroma.twig
+//
+// Weight: -1
+//
+// Style guide: sass.colors
+
+// Define the default color scheme's color names.
+$chroma: define-default-color-scheme('branding', "The site's main colors. Can be used to define colors in other color schemes.");
+
+$chroma: add-colors((
+  black:              #000,
+  'gray':             #1a171b,
+  gray-01:            #919191,
+  gray-02:            #535356,
+  gray-73:            #bababa,
+  gray-03:            #8f8f91,
+  gray-04:            #5d595d,
+  gray-05:            #e7e4e7,
+  gray-06:            #d2ccd2,
+  gray-suit:          #d2cdd3,
+  gun-powder:         #55555b,
+  chambray:           #3B5997,
+  dove-grey:          #707070,
+  denim:              #0b79b6,
+  boulder:            #7d7d7d,
+  mine-shaft:         #333333,
+  ivory:              #f8f7f8,
+  selago:             #f4f5f5,
+  nobel:              #979797,
+  pale-slate:         #d3cdd3,
+  link-water:         #d3d5d7,
+  bon-jour:           #e8e5e8,
+  white:              #fff,
+  white-smoke:        #f8f8f8,
+  white-smoke-2:      #f0eef0,
+  wild-sand:          #f5f5f5,
+  desert-storm:       #f6f5f4,
+  ghost:              #bfbec5,
+  mischka:            #e7e5e8,
+  violet:             #b697e3,
+  blue:               #688fdc,
+  green:              #66d6bf,
+  'aqua':             #1fd7e5,
+  turquoise:          #24d5e2,
+  downy:              #66d6c0,
+  red:                #da0032,
+  red-light:          #f69d9f,
+  crimson:            #dd0031,
+  bon-jour-2:         #ebe8eb,
+  sweet-pink:         #fc9e9f,
+  your-pink:          #fdc8c9,
+  gray57:             gray-01,
+  matterhorn:         gray-02,
+  alabaster-approx:   #f9f9f9,
+  picton-blue:        #55acee,
+  transparent:        transparent,
+  robins-egg-blue:    #00cbca,
+  red-ribbon:         #dc0a32,
+  abbey:              #545456,
+  ghost-approx:       #c9cdd5,
+));
